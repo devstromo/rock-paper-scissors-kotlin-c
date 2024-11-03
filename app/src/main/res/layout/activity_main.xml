@@ -6,6 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- Display the result of the game -->
+    <TextView
+        android:id="@+id/resultText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose an option to play!"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Stone button -->
+    <Button
+        android:id="@+id/buttonStone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stone"
+        app:layout_constraintTop_toBottomOf="@id/resultText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Paper button -->
+    <Button
+        android:id="@+id/buttonPaper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Paper"
+        app:layout_constraintTop_toBottomOf="@id/buttonStone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Scissors button -->
+    <Button
+        android:id="@+id/buttonScissors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scissors"
+        app:layout_constraintTop_toBottomOf="@id/buttonPaper"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Original sample text -->
     <TextView
         android:id="@+id/sample_text"
         android:layout_width="wrap_content"
@@ -14,6 +61,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="32dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

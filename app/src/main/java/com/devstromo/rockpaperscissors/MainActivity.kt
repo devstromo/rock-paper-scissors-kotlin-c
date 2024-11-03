@@ -11,22 +11,24 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Example of a call to a native method
-        binding.sampleText.text = stringFromJNI()
+        // Set up button click listeners for the player's choice
+        binding.buttonStone.setOnClickListener { playGame('s') }
+        binding.buttonPaper.setOnClickListener { playGame('p') }
+        binding.buttonScissors.setOnClickListener { playGame('z') }
     }
 
-    /**
-     * A native method that is implemented by the 'rockpaperscissors' native library,
-     * which is packaged with this application.
-     */
-    external fun stringFromJNI(): String
+    private fun playGame(playerChoice: Char) {
+        // Call the native function and display the result
+        val result = playGameJNI(playerChoice)
+        binding.resultText.text = result
+    }
+
+    external fun playGameJNI(playerChoice: Char): String
 
     companion object {
-        // Used to load the 'rockpaperscissors' library on application startup.
         init {
             System.loadLibrary("rockpaperscissors")
         }
