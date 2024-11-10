@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- Display the result of the game -->
     <TextView
         android:id="@+id/resultText"
         android:layout_width="wrap_content"
@@ -42,7 +41,7 @@
             android:id="@+id/paperImageButton"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:contentDescription="@string/stone_image_button_description"
+            android:contentDescription="@string/paper_image_button_description"
             android:src="@drawable/ic_paper"
             android:layout_marginStart="10dp"
             android:background="@android:color/transparent"
@@ -54,7 +53,7 @@
             android:id="@+id/scissorsImageButton"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:contentDescription="@string/stone_image_button_description"
+            android:contentDescription="@string/scissor_image_button_description"
             android:src="@drawable/ic_scissor"
             android:layout_marginStart="10dp"
             android:background="@android:color/transparent"

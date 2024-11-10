@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Rock Paper Scissors</string>
     <string name="stone_image_button_description">Stone image button</string>
+    <string name="paper_image_button_description">Paper image button</string>
+    <string name="scissor_image_button_description">Scissors image button</string>
     <string name="option_to_play_title">Choose an option to play!</string>
 </resources>
