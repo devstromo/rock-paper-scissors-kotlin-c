@@ -39,6 +39,18 @@
             android:scaleType="fitCenter"/>
 
         <ImageButton
+            android:id="@+id/paperImageButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/stone_image_button_description"
+            android:src="@drawable/ic_paper"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@id/resultText"
+            app:layout_constraintStart_toStartOf="parent"
+            android:scaleType="fitCenter"/>
+
+        <ImageButton
             android:id="@+id/scissorsImageButton"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -50,17 +62,5 @@
             app:layout_constraintStart_toStartOf="parent"
             android:scaleType="fitCenter"/>
     </LinearLayout>
-
-    <!-- Paper button -->
-    <Button
-        android:id="@+id/buttonPaper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Paper"
-        app:layout_constraintTop_toBottomOf="@id/buttonContainers"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

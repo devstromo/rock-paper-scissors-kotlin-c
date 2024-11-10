@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.stoneImageButton.setOnClickListener { playGame('s') }
         binding.scissorsImageButton.setOnClickListener { playGame('z') }
-        binding.buttonPaper.setOnClickListener { playGame('p') }
+        binding.paperImageButton.setOnClickListener { playGame('p') }
     }
 
     private fun playGame(playerChoice: Char) {
