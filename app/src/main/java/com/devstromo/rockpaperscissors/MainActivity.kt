@@ -2,7 +2,6 @@ package com.devstromo.rockpaperscissors
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import com.devstromo.rockpaperscissors.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
