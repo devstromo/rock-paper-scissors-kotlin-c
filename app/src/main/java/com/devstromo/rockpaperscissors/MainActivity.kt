@@ -14,10 +14,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Set up button click listeners for the player's choice
         binding.stoneImageButton.setOnClickListener { playGame('s') }
+        binding.scissorsImageButton.setOnClickListener { playGame('z') }
         binding.buttonPaper.setOnClickListener { playGame('p') }
-        binding.buttonScissors.setOnClickListener { playGame('z') }
     }
 
     private fun playGame(playerChoice: Char) {
