@@ -11,7 +11,7 @@
         android:id="@+id/resultText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose an option to play!"
+        android:text="@string/option_to_play_title"
         android:textSize="18sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,17 +19,25 @@
         android:padding="16dp"
         android:layout_marginTop="16dp"/>
 
-    <ImageButton
-        android:id="@+id/stoneImageButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:contentDescription="Stone image button"
-        android:src="@drawable/ic_stone"
-        android:layout_marginStart="10dp"
+    <LinearLayout
+        android:id="@+id/buttonContainers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/resultText"
-        app:layout_constraintStart_toStartOf="parent"
-        android:scaleType="fitCenter"
-        />
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <ImageButton
+            android:id="@+id/stoneImageButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/stone_image_button_description"
+            android:src="@drawable/ic_stone"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@id/resultText"
+            app:layout_constraintStart_toStartOf="parent"
+            android:scaleType="fitCenter"/>
+    </LinearLayout>
 
     <!-- Paper button -->
     <Button
@@ -37,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Paper"
-        app:layout_constraintTop_toBottomOf="@id/stoneImageButton"
+        app:layout_constraintTop_toBottomOf="@id/buttonContainers"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"/>
