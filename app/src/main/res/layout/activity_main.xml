@@ -19,16 +19,17 @@
         android:padding="16dp"
         android:layout_marginTop="16dp"/>
 
-    <!-- Stone button -->
-    <Button
-        android:id="@+id/buttonStone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stone"
+    <ImageButton
+        android:id="@+id/stoneImageButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="Stone image button"
+        android:src="@drawable/ic_stone"
+        android:layout_marginStart="10dp"
         app:layout_constraintTop_toBottomOf="@id/resultText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:scaleType="fitCenter"
+        />
 
     <!-- Paper button -->
     <Button
@@ -36,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Paper"
-        app:layout_constraintTop_toBottomOf="@id/buttonStone"
+        app:layout_constraintTop_toBottomOf="@id/stoneImageButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"/>
