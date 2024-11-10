@@ -32,7 +32,7 @@
             android:contentDescription="@string/stone_image_button_description"
             android:src="@drawable/ic_stone"
             android:layout_marginStart="10dp"
-            android:background="@android:color/transparent"
+            android:background="@drawable/rounded_button"
             app:layout_constraintTop_toBottomOf="@id/resultText"
             app:layout_constraintStart_toStartOf="parent"
             android:scaleType="fitCenter"/>
@@ -44,7 +44,7 @@
             android:contentDescription="@string/paper_image_button_description"
             android:src="@drawable/ic_paper"
             android:layout_marginStart="10dp"
-            android:background="@android:color/transparent"
+            android:background="@drawable/rounded_button"
             app:layout_constraintTop_toBottomOf="@id/resultText"
             app:layout_constraintStart_toStartOf="parent"
             android:scaleType="fitCenter"/>
@@ -56,7 +56,7 @@
             android:contentDescription="@string/scissor_image_button_description"
             android:src="@drawable/ic_scissor"
             android:layout_marginStart="10dp"
-            android:background="@android:color/transparent"
+            android:background="@drawable/rounded_button"
             app:layout_constraintTop_toBottomOf="@id/resultText"
             app:layout_constraintStart_toStartOf="parent"
             android:scaleType="fitCenter"/>
