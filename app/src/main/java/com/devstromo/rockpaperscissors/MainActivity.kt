@@ -9,14 +9,31 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private var playerOption: Char? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.stoneImageButton.setOnClickListener { onButtonSelected(binding.stoneImageButton, 's') }
-        binding.paperImageButton.setOnClickListener { onButtonSelected(binding.paperImageButton, 'p') }
-        binding.scissorsImageButton.setOnClickListener { onButtonSelected(binding.scissorsImageButton, 'z') }
+        binding.stoneImageButton.setOnClickListener {
+            onButtonSelected(
+                binding.stoneImageButton,
+                's'
+            )
+        }
+        binding.paperImageButton.setOnClickListener {
+            onButtonSelected(
+                binding.paperImageButton,
+                'p'
+            )
+        }
+        binding.scissorsImageButton.setOnClickListener {
+            onButtonSelected(
+                binding.scissorsImageButton,
+                'z'
+            )
+        }
     }
 
     private fun onButtonSelected(selectedButton: ImageButton, playerChoice: Char) {
@@ -25,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         binding.scissorsImageButton.isSelected = false
 
         selectedButton.isSelected = true
-
+        setPlayerOptionSelection(playerChoice)
         playGame(playerChoice)
     }
 
@@ -33,6 +50,10 @@ class MainActivity : AppCompatActivity() {
         // Call the native function and display the result
         val result = playGameJNI(playerChoice)
         binding.resultText.text = result
+    }
+
+    private fun setPlayerOptionSelection(playerChoice: Char) {
+        playerOption = playerChoice
     }
 
     external fun playGameJNI(playerChoice: Char): String
