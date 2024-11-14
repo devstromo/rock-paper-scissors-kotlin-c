@@ -63,4 +63,11 @@ class MainActivity : AppCompatActivity() {
             System.loadLibrary("rockpaperscissors")
         }
     }
+    //if (result == -1) {
+//        outcome = "Game Draw!";
+//    } else if (result == 1) {
+//        outcome = "You won the game!";
+//    } else {
+//        outcome = "You lost the game!";
+//    }
 }

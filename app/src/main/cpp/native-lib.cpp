@@ -2,6 +2,7 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <sstream> // For building the JSON string
 
 extern "C" {
 
@@ -44,22 +45,16 @@ Java_com_devstromo_rockpaperscissors_MainActivity_playGameJNI(JNIEnv *env, jobje
 
     int result = game(playerChoice, computerChoice);
 
-    std::string outcome;
-    if (result == -1) {
-        outcome = "Game Draw!";
-    } else if (result == 1) {
-        outcome = "You won the game!";
-    } else {
-        outcome = "You lost the game!";
-    }
+    // Create a JSON string with the result and computer choice
+    std::ostringstream jsonBuilder;
+    jsonBuilder << "{";
+    jsonBuilder << "\"computerChoice\": \"" << computerChoice << "\", ";
+    jsonBuilder << "\"result\": " << result;
+    jsonBuilder << "}";
 
-    // Compose result message
-    outcome += "\nYou chose: ";
-    outcome += playerChoice;
-    outcome += " and Computer chose: ";
-    outcome += computerChoice;
+    std::string jsonString = jsonBuilder.str();
 
-    return env->NewStringUTF(outcome.c_str());
+    return env->NewStringUTF(jsonString.c_str());
 }
 
 }
