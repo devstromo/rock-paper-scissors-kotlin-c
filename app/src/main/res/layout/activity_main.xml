@@ -72,6 +72,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginBottom="20dp"
+            android:contentDescription="Icon cycle"
             android:src="@drawable/ic_scissor" />
 
         <Button
