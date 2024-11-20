@@ -3,12 +3,13 @@ package com.devstromo.rockpaperscissors
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.devstromo.rockpaperscissors.databinding.ActivityMainBinding
+import org.json.JSONException
+import org.json.JSONObject
 import java.util.Random
 
 
@@ -26,6 +27,12 @@ class MainActivity : AppCompatActivity() {
         R.drawable.ic_stone,
         R.drawable.ic_paper,
         R.drawable.ic_scissor,
+    )
+
+    private val iconsMap = mapOf(
+        's' to R.drawable.ic_stone,
+        'p' to R.drawable.ic_paper,
+        'z' to R.drawable.ic_scissor,
     )
 
     private lateinit var handler: Handler
@@ -85,10 +92,23 @@ class MainActivity : AppCompatActivity() {
         // Call the native function and display the result
         val result = playGameJNI(playerChoice)
         binding.resultText.text = "$result $playerChoice"
+        try {
+            val jsonObject = JSONObject(result)
+            val computerChoice = jsonObject.getString("computerChoice")
+            computerSelection(computerChoice[0])
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
     }
 
     private fun setPlayerOptionSelection(playerChoice: Char) {
         playerOption = playerChoice
+    }
+
+    private fun computerSelection(computerChoice: Char) {
+        stopCyclingIcons()
+        val selection = iconsMap[computerChoice]
+        iconImageView!!.setImageResource(selection!!)
     }
 
     private fun startCyclingIcons() {
@@ -107,9 +127,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun stopCyclingIcons() {
-        isRunning = false // Stop cycling
-        iconSwitcher?.let { handler.removeCallbacks(it) } // Stop the handler
-        // You can add further actions here, e.g., save the result or start a new level
+        isRunning = false
+        iconSwitcher?.let { handler.removeCallbacks(it) }
     }
 
     external fun playGameJNI(playerChoice: Char): String
