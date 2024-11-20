@@ -3,7 +3,6 @@ package com.devstromo.rockpaperscissors
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -20,9 +19,7 @@ class MainActivity : AppCompatActivity() {
     private var playerOption: Char? = null
 
     private var iconImageView: ImageView? = null
-    private lateinit var stopButton: Button
 
-    // Array of icons (drawable resources)
     private val icons = intArrayOf(
         R.drawable.ic_stone,
         R.drawable.ic_paper,
@@ -134,7 +131,7 @@ class MainActivity : AppCompatActivity() {
         iconSwitcher?.let { handler.removeCallbacks(it) }
     }
 
-    external fun playGameJNI(playerChoice: Char): String
+    private external fun playGameJNI(playerChoice: Char): String
 
     companion object {
         init {
