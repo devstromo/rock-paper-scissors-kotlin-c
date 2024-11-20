@@ -70,31 +70,39 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onButtonSelected(selectedButton: ImageButton, playerChoice: Char) {
+        // Reset selection state
         binding.stoneImageButton.isSelected = false
         binding.paperImageButton.isSelected = false
         binding.scissorsImageButton.isSelected = false
 
+        // Set the selected button
         selectedButton.isSelected = true
+
+        // Restart cycling
         startCyclingIcons()
+
+        // Save the player's choice
         setPlayerOptionSelection(playerChoice)
-        playGame(playerChoice)
+
+        // Play the game after a short delay
+        handler.postDelayed({
+            playGame(playerChoice)
+        }, 1000) // Wait 1 second before showing the result
     }
 
     private fun playGame(playerChoice: Char) {
-        val result = playGameJNI(playerChoice)
+        val result = playGameJNI(playerChoice) // Native function call
         binding.resultText.text = "$result $playerChoice"
+
         try {
             val jsonObject = JSONObject(result)
             val computerChoice = jsonObject.getString("computerChoice")
-            val complete = object : Runnable {
-                override fun run() {
-                    computerSelection(computerChoice[0])
-                    if (isRunning) {
-                        handler.postDelayed(this, 5000)
-                    }
-                }
-            }
-            handler.post(complete)
+
+            // Delay to stop cycling and display the result
+            handler.postDelayed({
+                stopCyclingIcons() // Stop the cycling
+                computerSelection(computerChoice[0]) // Display the computer's choice
+            }, 500)
         } catch (e: JSONException) {
             e.printStackTrace()
         }
@@ -105,9 +113,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun computerSelection(computerChoice: Char) {
-        stopCyclingIcons()
         val selection = iconsMap[computerChoice]
-        iconImageView!!.setImageResource(selection!!)
+        if (selection != null) {
+            iconImageView!!.setImageResource(selection)
+        }
     }
 
     private fun startCyclingIcons() {
