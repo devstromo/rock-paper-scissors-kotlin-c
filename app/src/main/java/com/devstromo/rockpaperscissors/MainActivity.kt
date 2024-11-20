@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     private fun playGame(playerChoice: Char) {
         // Call the native function and display the result
         val result = playGameJNI(playerChoice)
-        binding.resultText.text = result
+        binding.resultText.text = "$result $playerChoice"
     }
 
     private fun setPlayerOptionSelection(playerChoice: Char) {
