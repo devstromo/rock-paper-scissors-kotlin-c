@@ -65,17 +65,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         iconImageView = findViewById(R.id.iconImageView)
-        stopButton = findViewById(R.id.stopButton)
 
         handler = Handler(Looper.getMainLooper())
         random = Random()
-        isRunning = true
-
 
         startCyclingIcons()
-
-
-        stopButton.setOnClickListener { stopCyclingIcons() }
     }
 
     private fun onButtonSelected(selectedButton: ImageButton, playerChoice: Char) {
@@ -84,18 +78,26 @@ class MainActivity : AppCompatActivity() {
         binding.scissorsImageButton.isSelected = false
 
         selectedButton.isSelected = true
+        startCyclingIcons()
         setPlayerOptionSelection(playerChoice)
         playGame(playerChoice)
     }
 
     private fun playGame(playerChoice: Char) {
-        // Call the native function and display the result
         val result = playGameJNI(playerChoice)
         binding.resultText.text = "$result $playerChoice"
         try {
             val jsonObject = JSONObject(result)
             val computerChoice = jsonObject.getString("computerChoice")
-            computerSelection(computerChoice[0])
+            val complete = object : Runnable {
+                override fun run() {
+                    computerSelection(computerChoice[0])
+                    if (isRunning) {
+                        handler.postDelayed(this, 5000)
+                    }
+                }
+            }
+            handler.post(complete)
         } catch (e: JSONException) {
             e.printStackTrace()
         }
@@ -112,6 +114,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startCyclingIcons() {
+        isRunning = true
         iconSwitcher = object : Runnable {
             override fun run() {
                 val randomIndex = random!!.nextInt(icons.size)

@@ -4,4 +4,5 @@
     <string name="paper_image_button_description">Paper image button</string>
     <string name="scissor_image_button_description">Scissors image button</string>
     <string name="option_to_play_title">Choose an option to play!</string>
+    <string name="icon_cycle_description">Icon cycle placeholder</string>
 </resources>

@@ -72,14 +72,8 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginBottom="20dp"
-            android:contentDescription="Icon cycle"
+            android:contentDescription="@string/icon_cycle_description"
             android:src="@drawable/ic_scissor" />
-
-        <Button
-            android:id="@+id/stopButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Stop" />
     </LinearLayout>
 
     <TextView
