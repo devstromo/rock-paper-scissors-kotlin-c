@@ -126,8 +126,8 @@ class MainActivity : AppCompatActivity() {
             override fun run() {
                 val randomIndex = random!!.nextInt(icons.size)
                 iconImageView!!.setImageResource(icons[randomIndex])
-
                 if (isRunning) {
+                    binding.gameResultText.text=""
                     handler.postDelayed(this, 100)
                 }
             }
