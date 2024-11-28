@@ -92,16 +92,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun playGame(playerChoice: Char) {
         val result = playGameJNI(playerChoice) // Native function call
+
         binding.resultText.text = "$result $playerChoice"
 
         try {
             val jsonObject = JSONObject(result)
             val computerChoice = jsonObject.getString("computerChoice")
-
-            // Delay to stop cycling and display the result
+            val computerResult = jsonObject.getString("result")
+            binding.gameResultText.text = when (computerResult) {
+                "-1" -> "Game Draw!"
+                "1" -> "You won the game!"
+                else -> "You lost the game!"
+            }
             handler.postDelayed({
-                stopCyclingIcons() // Stop the cycling
-                computerSelection(computerChoice[0]) // Display the computer's choice
+                stopCyclingIcons()
+                computerSelection(computerChoice[0])
             }, 500)
         } catch (e: JSONException) {
             e.printStackTrace()
@@ -147,11 +152,4 @@ class MainActivity : AppCompatActivity() {
             System.loadLibrary("rockpaperscissors")
         }
     }
-    //if (result == -1) {
-//        outcome = "Game Draw!";
-//    } else if (result == 1) {
-//        outcome = "You won the game!";
-//    } else {
-//        outcome = "You lost the game!";
-//    }
 }
