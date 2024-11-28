@@ -3,6 +3,7 @@ package com.devstromo.rockpaperscissors
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -70,43 +71,38 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onButtonSelected(selectedButton: ImageButton, playerChoice: Char) {
-        // Reset selection state
         binding.stoneImageButton.isSelected = false
         binding.paperImageButton.isSelected = false
         binding.scissorsImageButton.isSelected = false
 
-        // Set the selected button
         selectedButton.isSelected = true
 
-        // Restart cycling
         startCyclingIcons()
 
-        // Save the player's choice
         setPlayerOptionSelection(playerChoice)
 
-        // Play the game after a short delay
         handler.postDelayed({
             playGame(playerChoice)
-        }, 1000) // Wait 1 second before showing the result
+        }, 1000)
     }
 
     private fun playGame(playerChoice: Char) {
-        val result = playGameJNI(playerChoice) // Native function call
-
-        binding.resultText.text = "$result $playerChoice"
+        val result = playGameJNI(playerChoice)
+        Log.d("Game Screen", "playGame: $result $playerChoice")
 
         try {
             val jsonObject = JSONObject(result)
             val computerChoice = jsonObject.getString("computerChoice")
             val computerResult = jsonObject.getString("result")
-            binding.gameResultText.text = when (computerResult) {
-                "-1" -> "Game Draw!"
-                "1" -> "You won the game!"
-                else -> "You lost the game!"
-            }
+
             handler.postDelayed({
                 stopCyclingIcons()
                 computerSelection(computerChoice[0])
+                binding.gameResultText.text = when (computerResult) {
+                    "-1" -> "Game Draw!"
+                    "1" -> "You won the game!"
+                    else -> "You lost the game!"
+                }
             }, 500)
         } catch (e: JSONException) {
             e.printStackTrace()
