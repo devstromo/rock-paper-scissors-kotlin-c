@@ -95,9 +95,12 @@ class MainActivity : AppCompatActivity() {
             val computerChoice = jsonObject.getString("computerChoice")
             val computerResult = jsonObject.getString("result")
 
+            stopCyclingIcons()
+
             handler.postDelayed({
-                stopCyclingIcons()
                 computerSelection(computerChoice[0])
+
+                // Display the result message
                 binding.gameResultText.text = when (computerResult) {
                     "-1" -> "Game Draw!"
                     "1" -> "You won the game!"
@@ -107,10 +110,6 @@ class MainActivity : AppCompatActivity() {
         } catch (e: JSONException) {
             e.printStackTrace()
         }
-    }
-
-    private fun setPlayerOptionSelection(playerChoice: Char) {
-        playerOption = playerChoice
     }
 
     private fun computerSelection(computerChoice: Char) {
@@ -127,7 +126,7 @@ class MainActivity : AppCompatActivity() {
                 val randomIndex = random!!.nextInt(icons.size)
                 iconImageView!!.setImageResource(icons[randomIndex])
                 if (isRunning) {
-                    binding.gameResultText.text=""
+                    binding.gameResultText.text = ""
                     handler.postDelayed(this, 100)
                 }
             }
@@ -139,6 +138,11 @@ class MainActivity : AppCompatActivity() {
     private fun stopCyclingIcons() {
         isRunning = false
         iconSwitcher?.let { handler.removeCallbacks(it) }
+    }
+
+
+    private fun setPlayerOptionSelection(playerChoice: Char) {
+        playerOption = playerChoice
     }
 
     private external fun playGameJNI(playerChoice: Char): String
