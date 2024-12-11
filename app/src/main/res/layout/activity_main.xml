@@ -79,18 +79,6 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/resultText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:padding="16dp"
-        android:text=""
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/resultContainer" />
-
-    <TextView
         android:id="@+id/gameResultText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -100,6 +88,6 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/resultText" />
+        app:layout_constraintBottom_toTopOf="@id/resultContainer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
