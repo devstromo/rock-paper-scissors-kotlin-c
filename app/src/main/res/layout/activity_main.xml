@@ -11,64 +11,68 @@
         android:id="@+id/chooseOptionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
         android:text="@string/option_to_play_title"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:padding="16dp"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/buttonContainers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/chooseOptionText"
+        android:gravity="center_horizontal"
         android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        app:layout_constraintBottom_toTopOf="@+id/chooseOptionText">
+
         <ImageButton
             android:id="@+id/stoneImageButton"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:contentDescription="@string/stone_image_button_description"
-            android:src="@drawable/ic_stone"
             android:layout_margin="10dp"
-            android:padding="10dp"
             android:background="@drawable/rounded_button"
-            android:scaleType="fitCenter"/>
+            android:contentDescription="@string/stone_image_button_description"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_stone" />
 
         <ImageButton
             android:id="@+id/paperImageButton"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:contentDescription="@string/paper_image_button_description"
-            android:src="@drawable/ic_paper"
             android:layout_margin="10dp"
-            android:padding="10dp"
             android:background="@drawable/rounded_button"
-            android:scaleType="fitCenter"/>
+            android:contentDescription="@string/paper_image_button_description"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_paper" />
 
         <ImageButton
             android:id="@+id/scissorsImageButton"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:contentDescription="@string/scissor_image_button_description"
-            android:src="@drawable/ic_scissor"
             android:layout_margin="10dp"
-            android:padding="10dp"
             android:background="@drawable/rounded_button"
-            android:scaleType="fitCenter"/>
+            android:contentDescription="@string/scissor_image_button_description"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_scissor" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/resultContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
         android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/buttonContainers" >
+        app:layout_constraintTop_toBottomOf="@+id/gameResultText">
+
         <ImageView
             android:id="@+id/iconImageView"
             android:layout_width="150dp"
@@ -82,12 +86,13 @@
         android:id="@+id/gameResultText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="80dp"
         android:layout_marginTop="16dp"
         android:padding="16dp"
         android:text=""
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/resultContainer" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
