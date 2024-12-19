@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="pressedColor">#FFa5a7ab</color>
     <color name="borderColor">#FFa5a7ab</color>
-    <color name="selectedColor">#80FFFFFF</color>
+    <color name="selectedColor">#F5FFFFFF</color>
     <color name="defaultColor">#FFFFFFFF</color>
     <color name="transparent">@android:color/transparent</color>
 
