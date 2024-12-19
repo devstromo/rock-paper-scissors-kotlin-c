@@ -11,5 +11,6 @@
     <color name="borderColor">#FFa5a7ab</color>
     <color name="selectedColor">#FFa5a7ab</color>
     <color name="defaultColor">#FFFFFFFF</color>
+    <color name="transparent">@android:color/transparent</color>
 
 </resources>
