@@ -72,10 +72,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onButtonSelected(selectedButton: ImageButton, playerChoice: Char) {
+        binding.stoneImageButton.isEnabled = false
+        binding.paperImageButton.isEnabled = false
+        binding.scissorsImageButton.isEnabled = false
+
         binding.stoneImageButton.isSelected = false
         binding.paperImageButton.isSelected = false
         binding.scissorsImageButton.isSelected = false
-
         selectedButton.isSelected = true
 
         startCyclingIcons()
@@ -107,6 +110,9 @@ class MainActivity : AppCompatActivity() {
                     "1" -> "You won the game!"
                     else -> "You lost the game!"
                 }
+                binding.stoneImageButton.isEnabled = true
+                binding.paperImageButton.isEnabled = true
+                binding.scissorsImageButton.isEnabled = true
             }, 500)
         } catch (e: JSONException) {
             e.printStackTrace()
