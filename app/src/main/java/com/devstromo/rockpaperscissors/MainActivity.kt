@@ -67,8 +67,6 @@ class MainActivity : AppCompatActivity() {
 
         handler = Handler(Looper.getMainLooper())
         random = Random()
-
-        startCyclingIcons()
     }
 
     private fun onButtonSelected(selectedButton: ImageButton, playerChoice: Char) {
